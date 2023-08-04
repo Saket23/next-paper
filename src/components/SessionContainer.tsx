@@ -8,11 +8,11 @@ const SlideCanvas = dynamic(() => import('../components/SlideCanvas'), {
   ssr: false
 })
 
-const handleWebviewEvents = (handleWebviewEvents: any) => {
-  console.log("handleWebviewEvents", handleWebviewEvents)
-}
-
 const SessionContainer = () => {
+
+  const handleWebviewEvents = (handleWebviewEvents: any) => {
+    console.log("handleWebviewEvents", handleWebviewEvents)
+  }
 
   useEffect(() => {
     //@ts-ignore
