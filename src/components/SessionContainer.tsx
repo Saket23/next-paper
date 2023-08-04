@@ -1,13 +1,23 @@
 "use client"
 
 import dynamic from 'next/dynamic'
+import { useEffect } from 'react'
  
 const SlideCanvas = dynamic(() => import('../components/SlideCanvas'), {
   loading: () => <p>Loading...</p>,
   ssr: false
 })
 
+const handleWebviewEvents = (handleWebviewEvents: any) => {
+  console.log("handleWebviewEvents", handleWebviewEvents)
+}
+
 const SessionContainer = () => {
+
+  useEffect(() => {
+    //@ts-ignore
+    window.listenWebviewEvents = handleWebviewEvents;
+  }, [])
     return (
         <SlideCanvas />
     )
