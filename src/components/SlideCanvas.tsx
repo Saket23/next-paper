@@ -21,8 +21,8 @@ export default function SlideCanvas () {
 
 
     const calculateNextPoint = () => {
-        const lastPoint = lastFivePointsRef.current[4];
-        const secondLastPoint = lastFivePointsRef.current[3];
+        const lastPoint = lastFivePointsRef.current[lastFivePointsRef.current.length - 1];
+        const secondLastPoint = lastFivePointsRef.current[lastFivePointsRef.current.length - 2];
 
         //@ts-ignore
         const diffX = lastPoint.x - secondLastPoint.x;
@@ -92,6 +92,8 @@ export default function SlideCanvas () {
                     tempCircle2.current.remove();
                 }
 
+                console.log('predicted', nextPoint, nextToNext)
+
                 const strokeWidth = paper.project.currentStyle.strokeWidth;
 
                 const radius = strokeWidth / 4;
@@ -107,7 +109,7 @@ export default function SlideCanvas () {
                 tempCircle1.current.fillColor = new paper.Color(0.5, 0, 0.5);
 
                 tempCircle2.current = new paper.Path.Circle({
-                    center: nextPoint,
+                    center: nextToNext,
                     radius: radius,
                   });
               
